@@ -9,7 +9,7 @@
 #include <dt-bindings/zmk/mouse.h>
 
 // Re-defining the move speed of the mouse emulation so the default is high
-#define U_MOUSE_MOVE_MAX 1750
+#define U_MOUSE_MOVE_MAX 1400
 #undef MOVE_UP
 #undef MOVE_DOWN
 #undef MOVE_LEFT
@@ -31,7 +31,7 @@
 #define SCROLL_RIGHT SCROLL_HOR(U_MOUSE_SCROLL_MAX)
 
 // Setting a custom second speed for mouse movement
-#define U_MOUSE_MOVE_MAX2 900
+#define U_MOUSE_MOVE_MAX2 100
 #define MOVE_UP2 MOVE_VERT(-U_MOUSE_MOVE_MAX2)
 #define MOVE_DOWN2 MOVE_VERT(U_MOUSE_MOVE_MAX2)
 #define MOVE_LEFT2 MOVE_HOR(-U_MOUSE_MOVE_MAX2)
@@ -74,12 +74,11 @@
         compatible = "zmk,combos";
 	
 //combo to reach the MMO layer from any other layer, activating it a second time returns you to the lower layers
-        combo_MMO { 
-            timeout-ms = <45>;
-            key-positions = <30 33>;
-	    layers = <0 1 2 3 4 6 7>;
-            bindings = <&tog MMO>;
-                  };
+//        combo_MMO { 
+//            timeout-ms = <50>;
+//            key-positions = <30 33>;
+//            bindings = <&tog MMO>;
+//                  };
 
 // Combo to reach BLUE layer for connection settings and bluetooth profiles (also for forcing BLE instead of USB and vice versa) toggles just like MMO
 // Also set it so this combo should only work from base layer, so bail-out then BLUE.
@@ -92,7 +91,7 @@
 		  
 // This is the "bail-out" combo if you're ever lost, this will take you back to the base layer
          combo_HOME { 
-            timeout-ms = <75>;
+            timeout-ms = <50>;
             key-positions = <30 31>;
             bindings = <&to 0>;
                   };
@@ -113,68 +112,50 @@ moto: behavior_moto {
         };
         
 // This behavior lets me use both left and right click on the same key, tap for left hold for right.	
-DBCLK: behavior_DBCLK {
-            compatible = "zmk,behavior-hold-tap";
-            label = "DBCLK";
-            #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            quick-tap-ms = <150>;
-            flavor = "tap-preferred";
-            bindings = <&mkp>, <&mkp>;
-        };
+//DBCLK: behavior_DBCLK {
+//            compatible = "zmk,behavior-hold-tap";
+//            label = "DBCLK";
+//            #binding-cells = <2>;
+//            tapping-term-ms = <250>;
+//            quick-tap-ms = <150>;
+//            flavor = "tap-preferred";
+//            bindings = <&mkp>, <&mkp>;
+//        };
 	
 // These behaviors are the mod-morphs that should allow me different mouse speeds depending on if shift is being applied.
-mmvup: Variable_Mouse_Move_Up {
-            compatible = "zmk,behavior-mod-morph";
-            label = "Variable_Mouse_Move_Up";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_UP>, <&mmv MOVE_UP2>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
+//mmvup: Variable_Mouse_Move_Up {
+//            compatible = "zmk,behavior-mod-morph";
+//            label = "Variable_Mouse_Move_Up";
+//            #binding-cells = <0>;
+//            bindings = <&mmv MOVE_UP>, <&mmv MOVE_UP2>;
+//            mods = <(MOD_LSFT|MOD_RSFT)>;
+//        };
 	
-mmvdn: Variable_Mouse_Move_Down {
-            compatible = "zmk,behavior-mod-morph";
-            label = "Variable_Mouse_Move_Down";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_DOWN>, <&mmv MOVE_DOWN2>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
+//mmvdn: Variable_Mouse_Move_Down {
+//            compatible = "zmk,behavior-mod-morph";
+//            label = "Variable_Mouse_Move_Down";
+//            #binding-cells = <0>;
+//            bindings = <&mmv MOVE_DOWN>, <&mmv MOVE_DOWN2>;
+//            mods = <(MOD_LSFT|MOD_RSFT)>;
+//        };
 	
-mmvlft: Variable_Mouse_Move_Left {
-            compatible = "zmk,behavior-mod-morph";
-            label = "Variable_Mouse_Move_Left";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_LEFT>, <&mmv MOVE_LEFT2>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
+//mmvlft: Variable_Mouse_Move_Left {
+//            compatible = "zmk,behavior-mod-morph";
+//            label = "Variable_Mouse_Move_Left";
+//            #binding-cells = <0>;
+//            bindings = <&mmv MOVE_LEFT>, <&mmv MOVE_LEFT2>;
+//            mods = <(MOD_LSFT|MOD_RSFT)>;
+//        };
 	
-mmvrgt: Variable_Mouse_Move_Right {
-            compatible = "zmk,behavior-mod-morph";
-            label = "Variable_Mouse_Move_Right";
-            #binding-cells = <0>;
-            bindings = <&mmv MOVE_RIGHT>, <&mmv MOVE_RIGHT2>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-	
-// This is the mod-morph for adding the forward slash to SHIFT BACKSPACE
-/* SHBK: Shift_Back {
-*            compatible = "zmk,behavior-mod-morph";
-*            label = "Shift_Back";
-*            #binding-cells = <0>;
-*            bindings = <&kp BSPC>, <&kp SLASH>;
-*            mods = <(MOD_LSFT|MOD_RSFT)>;
-*        };
-*/
-// This is the tap-dance behavior that lets me double tap shift to get a caps-lock effect
-/* cshift: caps_shift {
-*            compatible = "zmk,behavior-tap-dance";
-*            label = "caps_shift";
-*            #binding-cells = <0>;
-*            tapping-term-ms = <100>;
-*            bindings = <&sk LSHIFT>, <&kp CAPS>;
-*        };
-*/              
-   };
+//mmvrgt: Variable_Mouse_Move_Right {
+//            compatible = "zmk,behavior-mod-morph";
+//            label = "Variable_Mouse_Move_Right";
+//            #binding-cells = <0>;
+//            bindings = <&mmv MOVE_RIGHT>, <&mmv MOVE_RIGHT2>;
+//            mods = <(MOD_LSFT|MOD_RSFT)>;
+//        };
+//              
+//   };
     
 
 
@@ -228,12 +209,12 @@ keymap {
             &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &mt APOS P
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  A       │  S       │  D       │  F (LGUI)│  G       │   │  H       │  J       │  K       │  L (:)   │ Backspace│
-            &kp A      &kp S      &kp D     &mt LGUI F &kp G          &kp H      &kp J      &kp K      &mt COLON L &kp BSPC
+            &kp A      &kp S      &kp D     &mt LGUI F &kp G          &kp H      &kp J      &kp K      &mt COLON L &kp BKSP
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , (-)    │ . (!)    │  Enter (?)
             &kp Z      &kp X      &kp C      &kp V      &kp B         &kp N     &kp M &mt MINUS COMMA &mt EXCL DOT &mt QMARK RET
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                       &moto SHRT BASE &sk LSHIFT      &mt RCTRL SPACE  &moto UTIL NUM
+                                       &moto SHRT BASE &sk LSHIFT      &kp SPACE  &moto UTIL NUM
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -244,47 +225,47 @@ keymap {
         //│ 1 (!)    │  2 (@)   │  3 (#)   │  4 ($)   │  5 (%)   │   │  6 (^)   │   7 (&)  │   8 (*)  │ 9 "("    │  0 ")"   │
          &mt EXCL N1 &mt AT N2  &mt HASH N3 &mt DLLR N4 &mt PRCNT N5 &mt CARET N6 &mt AMPS N7 &mt STAR N8 &mt LPAR N9 &mt RPAR N0   
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │   │          │          │          │          │          │
-          &kp TAB  &kp CAPS  &mt UNDER MINUS  &mt LGUI DEL  &mt PLUS EQUAL &mt PIPE BACKSLASH &mt LBRC LBKT &mt RBRC RBKT &mt COLON SEMI  &kp BSPC 
+        //│ DELETE   │  4       │  5       │  6       │          │   │ LEFT     │ DOWN     │ UP       │ RIGHT    │  ;       │
+          &kp TAB  &kp CAPS  &mt UNDER MINUS  &mt LGUI DEL  &mt PLUS EQUAL &mt PIPE BACKSLASH &mt LBRC LBKT &mt RBRC RBKT &mt COLON SEMI  &kp BKSP 
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │   │          │          │          │          │          │
-         &mt TILDE GRAVE    &kp TILDE 	&kp NON_US_BSLH &kp NON_US_HASH  &kp TILDE2 &kp MINUS &kp LALT &kp LESS_THAN &mt GREATER_THAN DQT  &mt QMARK RET   
+        //│ CAPS     │  7       │  8       │  9       │  0       │   │          │          │          │          │          │
+         &mt TILDE GRAVE    &kp TILDE 	&kp NON_US_BSLH &kp NON_US_HASH  &kp TILDE2 &kp MINUS &kp LALT &kp LESS_THAN &mt GREATER_THAN DQT  &mt QMARK SLASH   
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                           &moto SHRT BASE &trans        &trans   &moto UTIL MOUSE
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
 
-        Mouse_Layer { // MOUSE
-            bindings = <
+//        Mouse_Layer { // MOUSE
+//            bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│          │          │          │          │          │   │          │          │          │          │          │
-       &none &mwh SCROLL_LEFT &mmvup &mwh SCROLL_RIGHT &kp DEL         &none &kp LC(LS(TAB)) &kp LC(TAB) &kp LA(TAB) &kp LS(LG(S)) 
+//       &none &mwh SCROLL_LEFT &mmvup &mwh SCROLL_RIGHT &none         &none &kp LC(LS(TAB)) &kp LC(TAB) &kp LA(TAB) &kp LS(LG(S)) 
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │          │          │          │          │
-          &kp TAB    &mmvlft    &mmvdn     &mmvrgt    &mkp LCLK           &none    &mkp LCLK    &mkp RCLK  &kp LCTRL    &kp BSPC
+//          &kp TAB    &mmvlft    &mmvdn     &mmvrgt    &none           &none    &mkp LCLK    &mkp RCLK  &none      &kp BKSP
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │          │          │          │          │
-         &kp LSHIFT &mkp RCLK &mwh SCROLL_UP &mwh SCROLL_DOWN &mkp RCLK  &none     &kp LA(LEFT)  &kp LA(RIGHT)  &none &kp RET
+//         &kp LSHIFT &mkp RCLK &mwh SCROLL_UP &mwh SCROLL_DOWN &none  &kp RGUI &kp LA(LEFT)  &kp LA(RIGHT)  &none &kp RSHIFT
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                         &moto SHRT BASE &sk LSHIFT  &mt LALT SPACE &moto UTIL BASE
+//                                         &moto SHRT BASE &kp LALT     &kp LSHIFT &moto UTIL BASE
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
-        };
+//            >;
+//        };
 
         Util_layer { // UTIL
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│          │          │          │          │          |   │          │          │          │          │          |
-           &kp LC(A)     &kp C_PREV  &kp C_PP   &kp C_NEXT &none           &trans     &trans     &trans      &trans     &trans
+            &none     &kp C_PREV  &kp C_PP   &kp C_NEXT &none           &trans     &trans     &trans      &trans     &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │          │          │          │          │
-           &kp LC(C) &kp LC(V) &kp C_VOL_DN &kp C_VOL_UP  &kp C_MUTE       &trans     &trans     &trans      &trans     &trans
+             &none    &none &kp C_VOL_DN &kp C_VOL_UP  &kp C_MUTE       &trans     &trans     &trans      &trans     &trans
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │          │          │          │          │
-            &kp LC(Z)   &kp LC(Y)  &kp C_RW  &kp C_FF   &none           &trans     &trans     &trans     &trans     &trans
+            &none      &none       &kp C_RW  &kp C_FF   &none           &trans     &trans     &trans     &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &none     &kp LCTRL         &trans     &none
+                                             &none     &trans         &trans     &none
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -293,15 +274,15 @@ keymap {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│          │          │          │          │          │   │          │          │          │          │          │
-            &trans     &trans     &trans      &trans     &trans        &kp LC(T)     &kp F5      &kp UP      &kp LC(LA(TAB))      &none      
+            &trans     &trans     &trans      &trans     &trans        &none      &none      &kp UP      &none      &none      
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │          │          │          │          │
-            &trans     &trans     &trans      &trans     &trans       &kp LC(W)       &kp LEFT   &kp DOWN  &kp RIGHT   &kp BSPC      
+            &trans     &trans     &trans      &trans     &trans       &none       &kp LEFT   &kp DOWN  &kp RIGHT   &none      
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │          │          │          │          │
-            &trans     &trans     &trans      &trans     &trans       &kp LC(LS(T))      &none      &none  &kp SLASH  &kp RET      
+            &trans     &trans     &trans      &trans     &trans       &none      &none      &none      &none      &none      
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                              &none      &none         &kp SPACE     &none                           
+                                              &none      &none         &none     &none                           
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -323,38 +304,38 @@ keymap {
             >;
         };
         
-        MMO { // MMO
-            bindings = <
+//        MMO { // MMO
+//            bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ ESC/TAB  │   Q      │    W     │    E     │   R      │   │    ?     │ Scr Left │  mm Up   │Scr Right │    ?     │
-           &mt ESC TAB  &kp Q      &kp W      &kp E      &kp R          &none   &mwh SCROLL_LEFT &mmvup &mwh SCROLL_RIGHT &none
+//           &mt ESC TAB  &kp Q      &kp W      &kp E      &kp R          &none   &mwh SCROLL_LEFT &mmv MOVE_UP &mwh SCROLL_RIGHT &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│   Shift  │   A      │    S     │    D     │    F     │   │    ?     │  mm Left │  mm Down │ mm Right │    ?     │
-           &sk LSHIFT  &kp A      &kp S      &kp D      &kp F           &none    &mmvlft &mmvdn &mmvrgt &none 
+//           &sk LSHIFT  &kp A      &kp S      &kp D      &kp F           &none    &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none 
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  Control │   Z      │     X    │L & R clk │    C     │   │  ALT     │    ?     │  scr up  │  scr dn  │     ?    │
-           &sk LCTL    &kp Z     &kp X   &DBCLK RCLK LCLK  &kp C      &kp RALT &mwh SCROLL_UP &mwh SCROLL_DOWN &none &none 
+//           &sk LCTL    &kp Z     &kp X   &DBCLK RCLK LCLK  &kp C      &kp RALT &mwh SCROLL_UP &mwh SCROLL_DOWN &none &none 
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &mo MMO_NUM  &kp SPACE     &none       &none   
+//                                            &mo MMO_NUM  &kp SPACE     &none       &none   
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
-        };
+//            >;
+//        };
         
-        MMO_numbers { // MMO_NUM
-            bindings = <
+//        MMO_numbers { // MMO_NUM
+//            bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│          │          │          │          │          │   │          │     7    │     8    │    9     │          │
-              &trans   &trans     &trans     &trans      &trans          &none     &kp N7     &kp N8     &kp N9    &none     
+//              &trans   &trans     &trans     &trans      &trans          &none     &kp N7     &kp N8     &kp N9    &none     
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │     4    │      5   │     6    │          │
-              &trans   &trans     &trans      &trans     &trans           &none    &kp N4     &kp N5     &kp N6      &none  
+//              &trans   &trans     &trans      &trans     &trans           &none    &kp N4     &kp N5     &kp N6      &none  
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │     1    │     2    │    3     │          │
-              &trans    &trans     &trans     &trans     &trans         &kp N0      &kp N1    &kp N2     &kp N3      &none   
+//              &trans    &trans     &trans     &trans     &trans         &kp N0      &kp N1    &kp N2     &kp N3      &none   
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &none      &trans          &none       &none                   
+//                                            &none      &trans          &none       &none                   
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
-            >;
-        };
+//            >;
+//        };
     };
 };
