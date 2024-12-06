@@ -67,7 +67,7 @@ moto: behavior_moto {
             tapping-term-ms = <250>;
             bindings = <&mo>, <&to>;
         };
-
+};
 
 	keymap {
 		compatible = "zmk,keymap";
@@ -121,9 +121,6 @@ moto: behavior_moto {
             >;
         };
 
-
-	};
-};
 	Arrows_shortcuts_layer { // SHRT
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
@@ -157,4 +154,5 @@ moto: behavior_moto {
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
+};
 };
