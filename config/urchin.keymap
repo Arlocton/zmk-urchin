@@ -8,7 +8,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-#include "keymap_italian.h"
 
 // Layer definitions
 #define BASE 0
@@ -20,9 +19,16 @@
 #define SETTINGS 6
 // -----------------
 
+// This section is adjusting included behaviors and declaring optional parameters
+
+&mt {
+    flavor = "tap-preferred";
+    tapping_term_ms = <250>;
+};
+
 &sk {
-	// don't release mods on other mods presses
-	ignore-modifiers;
+    release-after-ms = <2000>;
+    quick-release;
 };
 
 
