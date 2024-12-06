@@ -142,7 +142,7 @@ moto: behavior_moto {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│ RESET    │          │          │          │PROFILE 0 │   │Force USB │          │          │          │  RESET   │
-            &reset     &none      &none      &none     &bt BT_SEL 0   &out OUT_USB &none      &none      &none       &reset
+            &sys_reset     &none      &none      &none     &bt BT_SEL 0   &out OUT_USB &none      &none      &none       &sys_reset
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│BOOTLOADER│          │          │          │PROFILE 1 │   │Force BLE │          │          │          │BOOTLOADER│
           &bootloader  &none      &none      &none     &bt BT_SEL 1   &out OUT_BLE &none      &none      &none    &bootloader
