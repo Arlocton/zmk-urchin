@@ -32,7 +32,7 @@
     quick-release;
 };
 
-&mwh {
+&msc {
     acceleration-exponent=<1>;
 };
 
