@@ -17,8 +17,8 @@
 #undef MOVE_DOWN
 #undef MOVE_LEFT
 #undef MOVE_RIGHT
-#define MOVE_UP MOVE_Y(-U_MOUSE_MOVE_MAX)
-#define MOVE_DOWN MOVE_Y(U_MOUSE_MOVE_MAX)
+#define MOVE_UP MOVE_Y(U_MOUSE_MOVE_MAX)
+#define MOVE_DOWN MOVE_Y(-U_MOUSE_MOVE_MAX)
 #define MOVE_LEFT MOVE_X(-U_MOUSE_MOVE_MAX)
 #define MOVE_RIGHT MOVE_X(U_MOUSE_MOVE_MAX)
 
@@ -141,7 +141,7 @@ moto: behavior_moto {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
         //│          │          │          │          │          │   │          │          │          │          │          │
-       &none &msc SCRL_LEFT &mmv MOVE_UP &msc SCRL_RIGHT &kp DEL         &none &kp LC(LS(TAB)) &kp LC(TAB) &kp LA(TAB) &kp LS(LG(S)) 
+       &none &msc SCRL_LEFT() &mmv MOVE_UP() &msc SCRL_RIGHT() &kp DEL         &none &kp LC(LS(TAB)) &kp LC(TAB) &kp LA(TAB) &kp LS(LG(S)) 
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │   │          │          │          │          │          │
           &kp TAB    &mmv MOVE_LEFT    &mmv MOVE_DOWN     &mmv MOVE_RIGHT    &mkp LCLK           &none    &mkp LCLK    &mkp RCLK  &kp LCTRL    &kp BSPC
