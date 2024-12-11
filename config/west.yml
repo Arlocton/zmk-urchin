@@ -17,8 +17,8 @@ manifest:
       remote: duckyb
       revision: main
     - name: zmk
-      remote: petejohanson
-      revision: feat/pointers-with-input-processors
+      remote: zmkfirmware
+      revision: main
       import: app/west.yml
   self:
     path: config
